@@ -17,3 +17,6 @@ appid.ip=IP
 appid.sid=sid
 appid.uid=uid
 menu.appcode=Appcode
+a.apptoken=Token
+appid.token=Token
+apptoken.index.title=Token management
