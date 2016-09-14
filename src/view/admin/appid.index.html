@@ -1,0 +1,53 @@
+<div class='head'>$lang.get('appid.index.title')</div>
+
+#parse('/widget/widget.message.html')
+
+<div class='tabs'>
+	<a href='/admin/appid' class='selected'>$lang.get('a.appid')</a>
+</div>
+
+<table id='appid-table' class='tablesorter nospace' border="0" cellpadding="0" cellspacing="1">
+	<thead>
+		<tr>
+			<th>$lang.get('appid.id')</th>
+			<th>$lang.get('appid.secret')</th>
+			<th>$lang.get('appid.name')</th>
+			<th>$lang.get('appid.callback')</th>
+			<th>$lang.get('appid.updated')</th>
+			<th>$lang.get('appid.created')</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+#foreach($f in $list)
+	<tr>
+		<td>$!f.appid</td>
+		<td>$!f.secret</td>
+		<td>$!f.name</td>
+		<td>$!f.callback</td>
+		<td>$!lang.format($f.updated, 'yyyy-MM-dd HH:mm:ss')</td>
+		<td>$!lang.format($f.created, 'yyyy-MM-dd HH:mm:ss')</td>
+		<td>
+			<a href='/admin/appid/code?appid=$f.id'>$lang.get('a.appcode')</a>
+			<a href='javascript:;' onclick='_delete("$f.id", this)'>$lang.get('a.delete')</a>
+		</td>
+	</tr>
+#end
+	</tbody>
+</table>
+
+ #parse('/widget/goto.page.html')
+
+<div class='btns'>
+	<a href="/admin/appid/create">$lang.get('a.create')</a>
+</div>
+
+<script>
+function _delete(id, o) {
+	if(confirm("$lang.get('title.are_u_sure_delete')")) {
+		$.post("/admin/appid/delete", {appid:id}, function(d){
+			$(o).parent().parent().remove();
+		})
+	}
+}
+</script>
