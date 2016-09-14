@@ -11,7 +11,7 @@ import org.giiwa.core.bean.UID;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 
-@Table(name = "gi_appcode")
+@Table(name = "gi_apptoken")
 public class AppToken extends Bean {
 
   /**

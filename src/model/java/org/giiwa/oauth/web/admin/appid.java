@@ -67,6 +67,11 @@ public class appid extends Model {
       q.and("appid", appid);
       this.set("appid", appid);
     }
+    String code = this.getString("code");
+    if (!X.isEmpty(code)) {
+      q.and("code", code);
+      this.set("code", code);
+    }
 
     Beans<AppCode> bs = AppCode.load(q, s, n);
     bs.setTotal((int) Helper.count(q, AppCode.class));
